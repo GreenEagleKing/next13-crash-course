@@ -4,7 +4,12 @@ async function fetchRepoContents(name) {
   await new Promise((resolve) => setTimeout(resolve, 3000))
 
   const res = await fetch(
-    `https://api.github.com/repos/greeneagleking/${name}/contents`
+    `https://api.github.com/repos/greeneagleking/${name}/contents`,
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
   )
   const contents = await res.json()
 
