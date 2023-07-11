@@ -14,14 +14,13 @@ async function fetchRepos() {
 
 const ReposPage = async () => {
   const repos = await fetchRepos()
-  console.log(repos)
   return (
     <div className="repos-container">
       <h2>Repositories</h2>
       <ul className="repo-list">
         {repos.map((repo) => (
           <li key={repo.id}>
-            <Link href={`/code/repo/${repo.name}`}>
+            <Link href={`/code/repos/${repo.name}`}>
               <h3>{repo.name}</h3>
               <p>{repo.description}</p>
               <div className="repo-details">
